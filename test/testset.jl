@@ -23,6 +23,7 @@ function main1()
     anim = Anim(ff)
     anim.tmax = 5
     see(anim)
+    return true
 end
 
 
