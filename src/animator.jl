@@ -51,9 +51,7 @@ Return a Drawable containing the animation frame at time t.
 """
 function frame(anim::Anim, t)
     d = Drawable(anim.width, anim.height)
-    over(d) do ctx
-        anim.fn(ctx, t)
-    end
+    anim.fn(d.ctx, t)
     return d
 end
 

@@ -1,8 +1,10 @@
 
+plotpath(x) = joinpath(ENV["HOME"], "plots/", x)
 
 function main()
     @testset "PlotKitGL" begin
         @test main1()
+        @test main2()
     end
 end
 
@@ -12,10 +14,12 @@ function plot(data; kw...)
     ad = AxisDrawable(data; kw...)
     drawaxis(ad)
     line(ad, data; linestyle = LineStyle(Color(:red),1))
-    return ad # what about close?    
+    return ad # close handled by caller
 end
 
+# a simple animated plot
 function main1()
+    println("main1")
     x = collect(0:0.01:10)
     pf(t) = pzip(x, sin.(x *(1+t)))
     ff(t) = plot(pf(t); ymin =-2, ymax = 2,
@@ -26,4 +30,17 @@ function main1()
     return true
 end
 
+# a simple animated plot, saving a frame
+function main2()
+    println("main2")
+    x = collect(0:0.01:10)
+    pf(t) = pzip(x, sin.(x *(1+t)))
+    ff(t) = plot(pf(t); ymin =-2, ymax = 2,
+                 windowbackgroundcolor=Color(1-exp(-t),0.8,0.8))
+    anim = Anim(ff)
+    save(frame(anim, 1.2), plotpath("test_plotkitgl2.png"))
+    anim.tmax = 1
+    see(anim)
+    return true
+end
 
