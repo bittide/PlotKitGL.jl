@@ -5,6 +5,7 @@ function main()
     @testset "PlotKitGL" begin
         @test main1()
         @test main2()
+        @test main3()
     end
 end
 
@@ -44,3 +45,10 @@ function main2()
     return true
 end
 
+# using the animator to show a fixed plot
+function main3()
+    x = -0.1:0.1:1.3
+    y = x.*x
+    see(plot(pzip(x,y); tmax = 1))
+    return true
+end
