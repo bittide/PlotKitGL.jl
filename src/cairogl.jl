@@ -22,7 +22,7 @@ using Cairo
 
 using ..PlotKitCairo: Pik, cairo_memory_surface_ctx, draw, PlotKitCairo 
 
-export closed,close,CairoWindow,init,swap,key
+export closed,checkresized,close,CairoWindow,init,interpret_key,swap,key
 
 
 ##############################################################################
