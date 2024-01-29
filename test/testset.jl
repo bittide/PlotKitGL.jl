@@ -12,7 +12,7 @@ end
 pzip(a,b) = Point.(zip(a,b))
 
 function plot(data; kw...)
-    ad = AxisDrawable(data; kw...)
+    ad = AxisDrawable(PointList(data); kw...)
     drawaxis(ad)
     line(ad, data; linestyle = LineStyle(Color(:red),1))
     return ad # close handled by caller
@@ -49,6 +49,6 @@ end
 function main3()
     x = -0.1:0.1:1.3
     y = x.*x
-    see(plot(pzip(x,y); tmax = 1))
+    see(plot(pzip(x,y)); tmax = 1)
     return true
 end
