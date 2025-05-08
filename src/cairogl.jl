@@ -79,6 +79,8 @@ mutable struct Window
 end
 
 function Window(width, height)
+    width = Int64(round(width))
+    height = Int64(round(height))
     glfw_setup()
     gwindow = GLFW.CreateWindow(width, height, "Window")
     GLFW.MakeContextCurrent(gwindow)
