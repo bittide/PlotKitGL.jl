@@ -731,10 +731,10 @@ end
 
 
 function makestore(cw::CairoWindow; storewidth = nothing, storeheight = nothing)
-    if storewidth == nothing
+    if isnothing(storewidth)
         storewidth = cw.width
     end
-    if storeheight == nothing
+    if isnothing(storeheight)
         storeheight = cw.height
     end
     cw.pik, cw.surface, cw.ctx = cairo_memory_surface_ctx(storewidth, storeheight)
