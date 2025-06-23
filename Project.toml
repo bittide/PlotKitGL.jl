@@ -1,7 +1,7 @@
 name = "PlotKitGL"
 authors = ["Sanjay Lall <sanjaylall@google.com>"]
 uuid = "482ab07a-b082-4a98-80a0-51c2b3942dee"
-version = "0.1.5"
+version = "0.1.6"
 
 
 [deps]
